@@ -1,0 +1,209 @@
+song_id,artist_id,role,is_primary
+690e2bc6-7a6f-4b3f-b71c-3be16390ae78,c6c508d6-4b42-48f2-813b-8d982ec40b07,"Singer, Lyricist",yes
+690e2bc6-7a6f-4b3f-b71c-3be16390ae78,28b94a16-261a-40be-8904-b37a50fb5d59,Producer,no
+a25af183-4914-4feb-91bf-d5cdc62e3327,c6c508d6-4b42-48f2-813b-8d982ec40b07,"Singer, Lyricist",yes
+18696218-3eb6-49d6-9837-38ee0c935e58,c6c508d6-4b42-48f2-813b-8d982ec40b07,"Singer, Lyricist",yes
+691c4716-dd75-4cb6-b63e-8c0c23574bf9,c6c508d6-4b42-48f2-813b-8d982ec40b07,"Singer, Lyricist",yes
+691c4716-dd75-4cb6-b63e-8c0c23574bf9,2110882b-cc1f-4784-a2cb-9a9defe74ceb,Composer,no
+76067940-c404-4161-9f55-bf2f67637549,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+6bad29ce-9fcd-4038-81d9-3acbb92b6dba,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+6bad29ce-9fcd-4038-81d9-3acbb92b6dba,b94d1990-e096-40d5-a9af-a394f5732446,Producer,no
+5bcfa21d-20f3-47db-b1a3-8564a1a82771,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+1fff3f44-b4ae-45c2-90c1-b5a6917cbda8,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+1fff3f44-b4ae-45c2-90c1-b5a6917cbda8,d021890a-ad91-408b-ae02-dbe22e1beeb3,Producer,no
+994d1edb-9cd0-4b1b-a3ae-0ad246d84736,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+994d1edb-9cd0-4b1b-a3ae-0ad246d84736,a49746c0-6ebf-4929-aa1c-551f63ce4646,Producer,no
+b7092383-8f99-47db-bcd2-a754f68d45d4,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+b7092383-8f99-47db-bcd2-a754f68d45d4,b94d1990-e096-40d5-a9af-a394f5732446,Producer,no
+6b4242cd-ce83-4b46-8f16-e88cdda13b65,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+6b4242cd-ce83-4b46-8f16-e88cdda13b65,8a425ff4-91d0-4d29-b42b-155518257af9,Producer,no
+481c2a09-da9a-4bc3-b5bb-4c6d13b7ded7,c6c508d6-4b42-48f2-813b-8d982ec40b07,Singer,yes
+8056c99d-0922-444b-b0e0-b0a65bff5d93,c6c508d6-4b42-48f2-813b-8d982ec40b07,"Singer, Lyricist, Composer",yes
+8056c99d-0922-444b-b0e0-b0a65bff5d93,28b94a16-261a-40be-8904-b37a50fb5d59,Arranger,no
+54f1316a-12bf-40dd-ba53-6c9ad563c6c1,e85477f1-f5f2-4ff2-bce5-3c248ad8c0b9,"Singer, Producer",yes
+9595cc05-bcbb-4c4e-8568-697b50fccd5c,e85477f1-f5f2-4ff2-bce5-3c248ad8c0b9,"Singer, Producer",yes
+07e5894b-9ea1-4dc3-a3a6-2cbada4e3c97,e85477f1-f5f2-4ff2-bce5-3c248ad8c0b9,"Singer, Producer",yes
+eeb5d3dd-409c-4714-a686-59c0c536baf6,e85477f1-f5f2-4ff2-bce5-3c248ad8c0b9,"Singer, Producer",yes
+a3333b8c-cc3c-42e9-9864-5ec8d560cc03,e6c6c330-5f9e-4736-89b7-357e37e53c9a,"Singer, Producer",yes
+7ebd5dcf-8496-44dc-8c9c-4829ba8d835a,e6c6c330-5f9e-4736-89b7-357e37e53c9a,"Singer, Producer",yes
+97a7245a-4a2a-418e-841e-233b39eee4e0,e6c6c330-5f9e-4736-89b7-357e37e53c9a,"Singer, Producer",yes
+83d90523-219c-406f-ab06-6b501b602c71,e6c6c330-5f9e-4736-89b7-357e37e53c9a,"Singer, Producer",yes
+7c1edce6-5528-48b4-9b6d-f73ff5348400,e6c6c330-5f9e-4736-89b7-357e37e53c9a,"Singer, Producer",yes
+cba203fd-bc81-4a0a-8bd2-7bdb03acd09c,e6c6c330-5f9e-4736-89b7-357e37e53c9a,"Singer, Producer",yes
+098f6a2a-ace4-4438-a157-d89a25c2f445,82119f88-7891-4d69-b7f2-0af056fbb190,Producer,yes
+b3d8d937-fb3a-4157-a404-dd71726198f7,82119f88-7891-4d69-b7f2-0af056fbb190,Producer,yes
+1b7f4674-f495-4266-a26a-b1561527d50b,82119f88-7891-4d69-b7f2-0af056fbb190,Producer,yes
+ae9a4102-8671-4e19-9f1c-33c413158007,82119f88-7891-4d69-b7f2-0af056fbb190,Producer,yes
+7687b2d9-60d8-4e3c-b6c9-2d0f8a3126e4,82119f88-7891-4d69-b7f2-0af056fbb190,Producer,yes
+d0b8b226-91bf-4591-ab9f-0734004a225e,82119f88-7891-4d69-b7f2-0af056fbb190,Producer,yes
+c1375d41-4ba4-4105-bee2-4b59c50f2e08,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+79949f24-44bd-4643-a59d-f612aced25b6,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+d4037880-db09-4f63-bd57-49c5bcc57c76,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+8839ca19-a4ec-442d-a444-21b19ff0efd5,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+0f9ed61b-08e4-4689-81bf-5e83aa8580bf,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+e4498887-26e3-490d-b46d-59831a32020f,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+dc410a09-f8dd-4d89-9d48-4a1d88297996,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+16ad2824-6186-4de0-a587-d04d10c99a75,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+e682f3e2-15aa-4f3f-a77f-735697b2a34c,e2e1dbd9-d24e-42be-8488-787fe59ce167,"Singer, Producer",yes
+0f3ba988-a822-48f4-b9f7-0301d0d20470,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+79ce8aa5-7a01-4e9b-ad09-93b74eb48296,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+400a6b1f-e829-4afb-8d60-ccb5ec81586a,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+c404e517-8023-49a5-aa6f-d7f2b9116149,b04ee611-ddda-4653-8edf-180d87526e15,"Singer, Lyricist",yes
+c404e517-8023-49a5-aa6f-d7f2b9116149,fc3121b4-e866-479c-b72b-7a8e394f61f3,Producer,no
+07ec8316-82c3-43b3-8a60-4b10dd88b315,b04ee611-ddda-4653-8edf-180d87526e15,"Singer, Lyricist",yes
+07ec8316-82c3-43b3-8a60-4b10dd88b315,fc3121b4-e866-479c-b72b-7a8e394f61f3,Producer,no
+d5a9dc00-3843-4aec-a77a-5705f241dd12,b04ee611-ddda-4653-8edf-180d87526e15,"Singer, Producer",yes
+f531ec1a-c410-4bb0-8756-b13d270a190a,b04ee611-ddda-4653-8edf-180d87526e15,"Singer, Lyricist",yes
+f531ec1a-c410-4bb0-8756-b13d270a190a,fc3121b4-e866-479c-b72b-7a8e394f61f3,Producer,no
+bb943a05-e348-4bb3-97ee-e8ba633e0f11,b04ee611-ddda-4653-8edf-180d87526e15,"Singer, Producer",yes
+1076ea41-2f8b-45fd-9439-f1cd0df023a9,b04ee611-ddda-4653-8edf-180d87526e15,"Singer, Lyricist",yes
+1076ea41-2f8b-45fd-9439-f1cd0df023a9,fc3121b4-e866-479c-b72b-7a8e394f61f3,Producer,no
+1935222b-70ac-48dd-a68a-bf68115bb6b7,b04ee611-ddda-4653-8edf-180d87526e15,"Singer, Lyricist",yes
+1935222b-70ac-48dd-a68a-bf68115bb6b7,fc3121b4-e866-479c-b72b-7a8e394f61f3,Producer,no
+a1b78fec-8648-4bdf-bd72-35e9da59d705,46416146-a3ea-4db3-9832-6ba543e77d4c,"Singer, Producer",yes
+ec1b52c4-cbdf-4a62-9be9-4a2471506b0f,46416146-a3ea-4db3-9832-6ba543e77d4c,"Singer, Producer",yes
+c8539088-d5b8-413d-8909-fe67cf720687,46416146-a3ea-4db3-9832-6ba543e77d4c,"Singer, Producer",yes
+84376b20-7400-4305-ad24-175cefead5ab,f1963d7a-4b56-498c-91f8-9fde00032d42,"Singer, Producer",yes
+019b1571-4a0d-465a-b52e-1b538be8e133,1c6c2981-0c77-4003-b68b-0675979db8b2,"Singer, Producer",yes
+92429366-44bd-4971-8891-f28a4d3b2e88,537cb7f0-e60d-403f-96c5-8a01032495b8,Producer,yes
+92429366-44bd-4971-8891-f28a4d3b2e88,7ebd60cd-97b3-4862-b6b0-b7577c8be881,Singer,no
+d4286f25-34bc-4e6a-aeeb-128b0f118e35,3b0bf040-e832-44b5-b362-573ea14fa8a9,Singer,yes
+d4286f25-34bc-4e6a-aeeb-128b0f118e35,d3777dd0-6365-415f-ac57-84952fcd9c2e,Producer,no
+5138a486-7aa0-4ec3-818d-2cd6e7518da3,87e21edb-9002-4c17-9b58-a5499a7ef8db,"Singer, Producer",yes
+8c9766e6-cbc6-4ba4-8c34-1953638067ec,c62b45ae-3969-4b82-afbf-387f95b348b0,"Singer, Producer",yes
+222f26bf-420e-41b1-a7c7-15128b6c134f,bf1ef2ca-b707-4585-ad43-5e9acfd0309b,"Singer, Producer",yes
+1ae318b8-d160-4a78-802f-0a00ef5f49f5,75c1ac24-23b2-4fac-b37e-4b304ad0054f,Producer,yes
+750dd830-eb1f-4dc5-acc6-3689a8a9788b,1c6c2981-0c77-4003-b68b-0675979db8b2,"Singer, Producer",yes
+568adbd8-5756-4377-9937-c204280fa531,e6936364-284f-4a7f-bd0b-64b0cb84aa75,Producer,yes
+a546e548-5d64-49a6-bf80-d58de9badc4b,d69d8e7b-eb7e-4f2f-a454-a26cbcba130f,Producer,yes
+6335ef06-7318-4f9f-9645-9447cb8b62f5,ab2fbebc-ef7e-43bc-8f94-906fefd4a529,Producer,yes
+291029fb-fd1b-4437-a015-a9655a5fb580,142449f1-9fc4-4875-88a3-9c8767d7ec0e,Producer,yes
+9d6eb018-77fb-436d-ae8c-202299cb0b04,8a425ff4-91d0-4d29-b42b-155518257af9,Producer,yes
+a68e6ab1-31e7-4efb-91fe-6f021b2ab038,2110882b-cc1f-4784-a2cb-9a9defe74ceb,Producer,yes
+cf0d352c-52c6-458e-bab2-8fe55522c362,2c2748ce-650b-43a5-a993-10a15920a72a,Producer,yes
+469943ff-6440-4500-a1c2-6afac4954c43,78883782-407d-48b1-a628-6a2738815215,Producer,yes
+a981fa2d-81ec-4146-bfcf-704c610fa325,08811b21-0520-4af8-a497-06d01a6a840e,Producer,yes
+fe8aa75e-df4c-468c-925a-8bf1c87a54a8,ab2fbebc-ef7e-43bc-8f94-906fefd4a529,Producer,yes
+1e2553c4-09d0-4c2e-8621-3c575156c986,4ad9dc35-1164-4b63-9148-6a5fe32b2617,Producer,yes
+a5d24076-82ac-4fc9-884c-5450e2e27c3a,41a53fdf-e0e6-447b-b546-88ff59d79ddb,Producer,yes
+8aaa79b8-52c3-4f53-8d14-e1cc9a27c9b9,3b832109-b2f5-404a-afcb-100498e8467f,Producer,yes
+d42715b5-018f-4bac-98ca-48c38aaefdb0,3e2ab05d-318a-49cf-8321-6d3deef421df,Producer,yes
+1128e150-3521-4db4-bf38-fd448c347a97,4dc8f838-b91e-41ab-b98f-94ae70b1e1d1,Producer,yes
+58c3fa67-640c-4604-8066-f4d3270b6f1a,24256261-f32c-4b51-8edb-622829dae6ef,Producer,yes
+285559c7-e4e7-4791-9da0-e030f60d3898,2e1141e5-861d-44cf-a8ae-2d4b60cbd58a,Producer,yes
+78bac403-be57-4b6c-96b7-c5c4312dd90b,c9cbe8f4-f1c0-49ea-ab6d-e46b3fd427a8,Producer,yes
+e44f2d36-3c0b-495f-b98e-bf9766f1ac13,8b090993-8bd6-4e48-9dc6-423e523f883f,"Singer, Producer",yes
+fbaa3613-6abb-4942-bf3b-49425571bfa7,dbb11fce-7cf3-4d10-908b-41be97a8a5bb,Producer,yes
+725c85bb-bc54-4201-9783-ebdbd3083223,6a5312e8-5737-4f65-88c9-ed221643b3cc,"Singer, Producer",yes
+36f097e2-3b8e-4260-9077-f9c58249ee07,9a227b0c-255a-4731-882e-2c21acd9d382,Producer,yes
+91b6c84c-ec7f-4731-9099-b6d5e83f1367,e2e1dbd9-d24e-42be-8488-787fe59ce167,Producer,yes
+139b4d52-d9a8-4941-b7ee-9e19011ad57d,ccffbe40-7676-4ebe-bdca-860552136e14,Producer,yes
+14e657a6-3ddb-49df-9b5f-168bdde47772,e6c6c330-5f9e-4736-89b7-357e37e53c9a,Producer,yes
+3d810a75-b378-4acf-9802-2e927ea0c789,46416146-a3ea-4db3-9832-6ba543e77d4c,"Singer, Producer",yes
+4ea45c5e-9c2f-43ef-8c9a-5f90f0724c32,d2d6c52f-a88e-47bf-88d6-c198750f30ae,Producer,yes
+e272c857-bcbc-4b70-b4c3-3b17ed4d7081,1acadb98-c59f-4904-af53-a67f25a9fb13,Producer,yes
+adb75f2d-0bfc-412f-a856-53e1154fad2a,9fc9ce6a-d236-4459-83c9-7b795830a57c,Singer,no
+adb75f2d-0bfc-412f-a856-53e1154fad2a,7ba8af27-4d9a-424e-b2c4-93f3fd52d778,Singer,no
+adb75f2d-0bfc-412f-a856-53e1154fad2a,9188f143-35e4-4032-bb54-0926823e434a,Singer,yes
+adb75f2d-0bfc-412f-a856-53e1154fad2a,5054b621-ffab-41be-9a4d-aa8f95475c43,Singer,no
+adb75f2d-0bfc-412f-a856-53e1154fad2a,767491c4-ff9f-4411-9093-0a5237072a8b,Singer,no
+adb75f2d-0bfc-412f-a856-53e1154fad2a,06cefe71-6cbb-4d70-9721-e6f61c2f36d6,Singer,no
+4b35d731-e479-4d09-abe0-1636fb236542,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+473f58bc-0128-4f65-b4c2-c8e539b5ca41,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+4c2595b3-9805-4b2c-befb-e41e94ef7ff9,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+4c2595b3-9805-4b2c-befb-e41e94ef7ff9,203a8542-4125-4c32-85b4-7fb1f2aa9df3,Singer,no
+d65e0d15-8d6b-4d97-a8b7-1778bfb63100,b1d97e5e-0303-4253-b66e-81db89f4d765,Singer,yes
+bcc7e3ee-b318-413c-ab33-2f8243747e7f,7ac8bad8-362b-4b2e-91a3-1746ac4bc6f2,"Singer, Producer",yes
+78c49e33-56aa-4eb4-b727-ac14de929ad1,3b8bfdfa-5a15-4b05-9726-b1fa3eca9fd5,"Singer, Producer",yes
+9fac5cb8-2d70-4f1e-a152-18eca69cb494,ba764a2f-2380-4ada-90e0-361e3a5f0ac4,Producer,yes
+b680ee72-df02-4085-bebc-ee8d45b86184,79b11717-573e-450c-9edf-20c8186b9d48,Producer,yes
+97557f9c-44b7-4f74-8d58-0e2eed025dfc,15ad8c29-6c2c-4209-bad8-b148daae9752,"Singer, Producer",yes
+f7f6a1d7-d866-458b-a8b3-082f8612b666,8317a263-a969-4e87-926c-255e14d7dc57,"Singer, Lyricist",yes
+e9d8e32d-8acb-4c7a-9df8-229b8667da90,9e62c6e7-6bfc-49bb-a8d3-34ce23a98447,"Singer, Producer",yes
+a93c5da0-0b1f-415f-a5db-354d81a4a60a,a78e0901-e6c5-4804-8eb7-48116eecc34c,"Singer, Producer",yes
+eef48635-c81b-431f-90b4-2a70e27bfeee,eb9d8a0f-b502-4c8d-aa49-068c48b90613,Producer,yes
+7826629b-e984-478f-914b-5f0fbbb5097d,d6d06cff-04fc-495e-b3e8-26912ac442af,Producer,yes
+a4d97128-337c-4558-9b01-fb640acb2566,77e74f77-5cf4-4561-9894-e7f2c4778d88,Producer,yes
+939a039a-d576-471e-921a-ef60ba801f47,c1983f6d-b0f5-4b01-a78c-3b2422ba4884,Producer,yes
+e579b584-4624-4b9a-bc42-921d6fb20319,de9d6646-82a6-468c-b00b-6e2030fd8b9c,Singer,yes
+e579b584-4624-4b9a-bc42-921d6fb20319,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",no
+2530a465-affe-46fd-82f9-e2b0e143e1ee,e2e1dbd9-d24e-42be-8488-787fe59ce167,Producer,yes
+a237f647-3564-47aa-9df4-b38c7e146777,e2e1dbd9-d24e-42be-8488-787fe59ce167,Producer,yes
+28787e57-ac09-4ed0-b068-7fe7b0691880,e4c061fa-7bbd-47cf-b735-d15daae0d09a,Singer,yes
+dae0755b-0487-4f71-9afc-2a8a705421a6,f3b9e482-1036-462d-9932-306d5f61a1b2,Singer,yes
+dae0755b-0487-4f71-9afc-2a8a705421a6,93f78ff8-a7c4-4a41-8387-8748ecca6763,Producer,no
+8d0a83fd-6cb5-4c71-a414-e29dc0b5e101,edd54812-8b1d-49fb-a0b9-d9ade8770dba,Singer,yes
+988b374a-4974-4666-8a7c-65cfbadd0f59,e9ed662c-f1cc-4621-9c34-40b725bb3b7c,Producer,yes
+c5a87dcc-c02f-4d76-a08a-fb8ada86ae15,5f563785-4529-44ec-9f98-dad235e016a1,"Singer, Producer",yes
+c5a87dcc-c02f-4d76-a08a-fb8ada86ae15,be34ea37-49cf-4f61-ae05-0bd012216c5a,"Singer, Lyricist",no
+8e1e21d6-c810-4f4c-8c9c-61785f727bd7,b94d1990-e096-40d5-a9af-a394f5732446,"Singer, Producer",yes
+8e1e21d6-c810-4f4c-8c9c-61785f727bd7,927894b0-787e-4c5a-a1da-276e501345fd,Singer,no
+4c11f421-b3c6-47bb-bcd8-4b2a37f617dd,45f3a57b-8788-4736-86d0-fba0633c1e3c,"Singer, Producer",yes
+119b6112-b616-4b01-8b14-d689e907d478,46416146-a3ea-4db3-9832-6ba543e77d4c,"Singer, Producer",yes
+f5aadf81-80cb-4042-b48f-260af77dbbae,b94d1990-e096-40d5-a9af-a394f5732446,"Singer, Producer",yes
+8832368c-13ac-449d-9cb1-2bebe3b6d780,6e08e05b-96d5-4685-bc90-232c270d4503,"Singer, Producer",yes
+9ccbfaf8-4979-4488-87b4-d62ae744cbb6,231bcd4c-52a1-4f74-ad5e-3c52c2d836f9,Producer,yes
+00b1614a-4de1-403e-be22-d32c3dba83d5,9c5afe76-d3db-43ad-a836-12ef0efc2bca,"Singer, Producer",yes
+15cfaabc-4f02-4945-9031-3a7ae0f3a3c6,fa80dc3a-cb54-42a8-b6cb-516ab35f7762,Singer,yes
+f3fc894f-c2d9-4570-aada-d0f406481968,c1983f6d-b0f5-4b01-a78c-3b2422ba4884,Producer,yes
+a491639d-6fdd-4131-a9d4-708466d18fe8,72a216c6-d549-443b-8ffa-848bf1303b8a,"Singer, Producer",yes
+26c5f465-c47a-4704-be3f-ef0d47d3a0c1,c1983f6d-b0f5-4b01-a78c-3b2422ba4884,Producer,yes
+3ee89bbc-f877-49c6-97b1-8f36b787bf9c,0d1b2436-07bb-435f-acf6-84f5ebae41a0,Producer,yes
+ad0dd4bf-85e0-4b5e-a1a3-6363407f0003,82808218-1035-4ee6-9ff5-912250e83cc3,Producer,yes
+87f4cea5-3ed7-46db-9a00-94d959305e82,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+b582fea0-ce0e-42ce-81c1-4335691905b5,b7e0bccd-b3c7-4a9a-86b1-dcb9975e2411,"Singer, Producer",yes
+442e1166-7001-4620-82be-4072e4afbad5,45547320-ba8f-431d-96fe-f629471d92b3,Producer,yes
+d5ed1423-0f5b-4ab4-8f21-7089c54a9b43,a8e97708-c553-4136-b283-f8bbd0cfde9e,"Singer, Producer",yes
+6c687712-0b72-4eb9-ae7b-581bf61f8352,f1963d7a-4b56-498c-91f8-9fde00032d42,Producer,yes
+c4716796-bf15-49bb-805d-1068d91bbcbb,f1963d7a-4b56-498c-91f8-9fde00032d42,Producer,yes
+42c6ca43-e494-4d91-9158-21cbcbff53ab,45547320-ba8f-431d-96fe-f629471d92b3,Producer,yes
+a894a60f-e606-4f17-8e45-a2d2e6ed15bc,3dac6f91-058d-4c1a-9f44-96bb021695ab,"Singer, Producer",yes
+072d8cd1-26ea-43c3-a543-b9f18f9ab51e,6abd2c33-aaf2-4df6-b242-ac670078488e,"Singer, Producer",yes
+0089e4d5-4b98-4112-b3dc-0d08a163eda5,494c7444-f108-40fe-99bd-44db6266330e,Producer,yes
+e29d743c-a29e-42f0-9e83-693e19d1c071,5ff19f29-3617-4188-9130-64de206127db,Singer,yes
+e29d743c-a29e-42f0-9e83-693e19d1c071,3a13e9ce-6fb0-4f68-a40a-3d2c6a342689,Singer,no
+2975d2b3-84ad-4039-b6a4-0de5567200e8,0ffb7d50-44e0-4d1f-9959-210a0cb1a387,"Singer, Producer",yes
+c4f04b3f-dac2-40c2-bfe2-a3a81e5971ca,0ffb7d50-44e0-4d1f-9959-210a0cb1a387,"Singer, Producer",yes
+6763b774-0638-4eb7-81b5-b6e8a85db2d4,e2e1dbd9-d24e-42be-8488-787fe59ce167,Producer,yes
+2ec066fa-a519-465e-bd40-4ddc47497ed7,fbf0032a-b32d-4442-961a-9958396502cf,Producer,yes
+7cf7fe55-123b-4407-93f6-4abc391d434e,ca2ea8e4-dd6d-4fe9-a137-049bed3e4d28,Producer,yes
+120e24a4-a711-43d5-beef-b8ada684b00f,eb798c1c-fbef-4ca3-96db-49733c9fc829,"Singer, Producer",yes
+ec040879-b6aa-4968-a7a5-001c858cdd9b,165c274e-29e1-4880-9431-70b992edc883,Producer,yes
+65365436-37aa-40cc-ae06-87f70b79c9d3,c9b8b83f-6430-4e3b-acf5-2dabe187cb80,Singer,yes
+65365436-37aa-40cc-ae06-87f70b79c9d3,00f9980c-d4aa-462b-a98e-ddf46311ce5b,Singer,no
+65365436-37aa-40cc-ae06-87f70b79c9d3,6459fb49-56a7-415b-a765-eae25796e062,Singer,no
+1f95203a-08a4-483d-b91c-fff13ef37c5c,6abd2c33-aaf2-4df6-b242-ac670078488e,"Singer, Producer",yes
+8d459b42-793d-475e-b4df-27cb767b5085,6abd2c33-aaf2-4df6-b242-ac670078488e,"Singer, Producer",yes
+d44d6247-53b9-42b5-947b-ee7178713113,bf28d754-9d52-48e7-a391-b53c2a58f605,Singer,yes
+68fca935-9c63-4ba2-bd13-c65b33f92a5c,aff16d9a-029d-4a05-9145-d8d8965ca9b2,Composer,yes
+b08f8cdd-0c93-404d-9cb1-8156c8e91ce0,0ffb7d50-44e0-4d1f-9959-210a0cb1a387,"Singer, Producer",yes
+61e21c81-5cf4-439a-be3a-17bc988296f1,183009d2-c719-4aaa-b94c-6e1d07bcdd29,Singer,yes
+55112a7c-5121-42a3-a59c-52fc9dca5698,6abd2c33-aaf2-4df6-b242-ac670078488e,"Singer, Producer",yes
+1ca0f7bf-8dbb-4b32-bd79-eee419010be0,f67a77a6-4fa2-45b5-97f0-cbb153378191,Producer,yes
+ab5f9d64-b976-403e-93d2-cfa78569ccc5,f67a77a6-4fa2-45b5-97f0-cbb153378191,Producer,yes
+69f62fef-8957-471d-8a88-24e4ac8e6e66,dd963329-bdd3-47e7-9509-e5f0511b4904,"Singer, Producer",yes
+c73919a0-85f2-40b7-9125-1937a7aaddca,6abd2c33-aaf2-4df6-b242-ac670078488e,"Singer, Producer",yes
+2bfc9ddc-bcd9-4548-bbbb-3897951f1551,dd032b92-9f1c-4092-9ee0-7c4a4f384492,Singer,yes
+7e36029d-4aef-4c8a-b601-5379d734e914,7ba8af27-4d9a-424e-b2c4-93f3fd52d778,Singer,yes
+12aac7f2-bead-40d5-8dc9-2ebc8ac7bfd4,f0202baa-70c9-4cd7-b181-52fb56db9c54,Singer,yes
+b4c2e5b3-7c7b-4874-bf0e-62221ebebf03,1acadb98-c59f-4904-af53-a67f25a9fb13,Producer,yes
+a606c265-215c-456e-9f74-22609af3f055,aafd62b9-563c-4dac-9ee1-ff2ab766215e,Producer,yes
+ffafefc3-464f-4c4d-a6bf-8c54daab2751,8317a263-a969-4e87-926c-255e14d7dc57,"Singer, Producer",yes
+c17098cc-7d42-4b41-879c-f8f6dbed53ca,4ad9dc35-1164-4b63-9148-6a5fe32b2617,"Singer, Producer",yes
+df288e92-8c04-4216-8b03-381366728d52,7ba8af27-4d9a-424e-b2c4-93f3fd52d778,"Singer, Producer",yes
+adc7d5db-0a5d-4bd9-be90-08ba3a612fc1,0dbe53d0-c047-435c-9298-649a820fb770,Producer,yes
+134a026f-5dfe-4cd5-9a56-773f8c16f7ae,e6c6c330-5f9e-4736-89b7-357e37e53c9a,Producer,yes
+2a4586de-d3cd-4298-b5a4-f0bbbc67eb19,e4c061fa-7bbd-47cf-b735-d15daae0d09a,"Singer, Producer",yes
+c00fd8a4-37b0-4403-a22d-1656cc7ab242,bf889d70-a518-4106-86d2-2fb61955eb9d,Singer,yes
+626ae010-0b97-4ba5-8ec9-b84d4358af41,b94d1990-e096-40d5-a9af-a394f5732446,"Singer, Producer",yes
+58ea9dbe-06b7-45e2-8f02-653c156f6ad2,e6c6c330-5f9e-4736-89b7-357e37e53c9a,Producer,yes
+d8cd9cd8-ae04-4c54-b058-8436badbcc3c,e6c6c330-5f9e-4736-89b7-357e37e53c9a,Producer,yes
+057f6d66-5da8-43b6-9e9f-ff07430bcd6b,1d05e02e-e25e-49fe-99a7-d817473b3da3,Producer,yes
+21ebbb0a-fb6d-4966-9f2d-99af1f87528f,1d05e02e-e25e-49fe-99a7-d817473b3da3,Producer,yes
+99212ba9-7703-43f5-a61d-b0f0b3fa6266,8a425ff4-91d0-4d29-b42b-155518257af9,Producer,yes
+09390fa4-704d-473e-b87a-8e624e87a1bd,ff217ac8-a0ab-492e-9d9f-3a0d380f8a2c,"Singer, Producer",yes
+e9ee962a-e5d6-4c57-a99c-392be9f33b1d,b9e06342-6143-4ef9-adbc-1eeb22b055bc,Singer,yes
+e9ee962a-e5d6-4c57-a99c-392be9f33b1d,952ddbf6-3a67-4203-b174-9d72ea354ea2,Producer,no
+67f07b3b-7391-496e-9cac-c7845a50e18e,aa265c70-2bc4-4edd-a6fa-e428f49d7915,Singer,yes
+160e5612-2a70-49a7-8d35-c0c93fca78d7,9b907873-8e81-4ff3-a01b-f729a882c51b,Producer,yes
+4dbb73a9-a986-4bd5-b53e-2cedf09c04a8,f1963d7a-4b56-498c-91f8-9fde00032d42,Producer,yes
