@@ -1,0 +1,75 @@
+# Piano Corner
+
+Piano Corner is a project made to document my existing repertoire of all song covers
+I can play on piano, namely for jpop and vocaloid songs. The database features songs,
+artists, and a sources table, along with two junction tables that map the relation
+between songs and artists as well as songs and sources. This is a much more
+tractable alternative to google docs, offering scalability™ and integrity, with
+adherence to the third normal form.
+
+## Tables
+
+### Songs
+
+Table of all the songs, with current playing progress represented as a scale from 1-5
+and youtube link for ease of access
+
+### Artists
+
+All main artists which are associated with the songs
+
+### Sources
+
+All sources that the songs originate from, if they exist
+
+### Song to Artist
+
+How each song is associated with the artist, whether as a singer, producer, etc
+
+### Song to Source
+
+How each song is associated with the source, whether it's an anime, movie, or game
+
+
+## Schema
+
+### songs
+
+| song_id | original_name | english_name | release_date | duration | genre   | youtube_link | progress |
+|---------|---------------|--------------|--------------|----------|---------|--------------|----------|
+| UUID    | VARCHAR       | VARCHAR      | DATE         | INTERVAL | VARCHAR | VARCHAR      | TINYINT  |
+
+### artists
+
+| artist_id | original_name | english_name | type    |
+|-----------|---------------|--------------|---------|
+| UUID      | VARCHAR       | VARCHAR      | VARCHAR |
+
+### sources
+
+| source_id | original_title | english_title | type    | release_date | creator |
+|-----------|----------------|---------------|---------|--------------|---------|
+| UUID      | VARCHAR        | VARCHAR       | VARCHAR | DATE         | VARCHAR |
+
+### song_to_artist
+
+| song_id | artist_id | role    | is_primary |
+|---------|-----------|---------|------------|
+| UUID    | UUID      | VARCHAR | BOOLEAN    |
+
+### song_to_source
+
+| song_id | source_id | relation |
+|---------|-----------|----------|
+| UUID    | UUID      | VARCHAR  |
+
+
+## How to use
+
+Download this repo and open a shell from this directory
+
+Run ```chmod +x setup_db.sh``` (one time)
+
+Run ```./setup_db.sh```. This will generate a db file from the csv files
+
+To run queries, write your own sql query in /queries and run ```./duckdb PianoCorner.db < queries/your_query.sql```
