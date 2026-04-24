@@ -6,11 +6,11 @@ import re
 
 
 TABLE_FIELDS = {
-    "songs": ["song_id", "original_name", "english_name", "release_date", "duration", "genre", "youtube_link", "progress"],
-    "artists": ["artist_id", "original_name", "english_name", "type"],
-    "sources": ["source_id", "original_title", "english_title", "type", "release_date", "creator"],
-    "song_to_artist": ["song_id", "artist_id", "role", "is_primary"],
-    "song_to_source": ["song_id", "source_id", "relation"]
+    "songs": {"song_id": "str", "original_name": "str", "english_name": "str", "release_date": "str", "duration": "str", "genre": "str", "youtube_link": "str", "progress": "int8"},
+    "artists": {"artist_id": "str", "original_name": "str", "english_name": "str", "type": "str"},
+    "sources": {"source_id": "str", "original_title": "str", "english_title": "str", "type": "str", "release_date": "str", "creator": "str"},
+    "song_to_artist": {"song_id": "str", "artist_id": "str", "role": "str", "is_primary": "bool"},
+    "song_to_source": {"song_id": "str", "source_id": "str", "relation": "str"}
 }
 SESSION_FIELDS = {
     "songs": ["songs_song_id", "songs_original_name", "songs_english_name", "songs_release_date", "songs_duration", "songs_genre", "songs_youtube_link", "songs_progress"],
@@ -26,6 +26,7 @@ TABLE_PATHS = {
     "song_to_artist": "data/Piano Corner - Song to Artist.csv",
     "song_to_source": "data/Piano Corner - Song to Source.csv"
 }
+date_fields = ["release_date"]
 
 
 if "init" not in st.session_state:
@@ -96,6 +97,42 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+
+def read_csv(table):
+    table_path = TABLE_PATHS[table]
+    t_fields = TABLE_FIELDS[table]
+    return pd.read_csv(table_path, dtype=t_fields)
+
+def to_csv(table, df):
+    table_path = TABLE_PATHS[table]
+    df.to_csv(table_path, index=False, date_format="%Y-%m-%d")
+    
+def search_table(table, t_search, s_key):
+    name = st.session_state[s_key]
+    if not name.strip():
+        st.warning("Please enter a non-blank name.")
+        return
+    
+    t_fields = TABLE_FIELDS[table]
+    s_fields = SESSION_FIELDS[table]
+    
+    df = read_csv(table)
+    result = df[df[t_search].str.contains(name, case=False, na=False)]
+
+    if result.empty:
+        st.warning(f"{name} not found in {table}.")
+        return
+    
+    match = result.iloc[0]
+    
+    for i, t_field in enumerate(t_fields.keys()):
+        s_field = s_fields[i]
+        val = match[t_field]
+        if t_field in date_fields:
+            val = datetime.datetime.strptime(val, "%Y-%m-%d").date()
+        st.session_state[s_field] = val
+    
+    st.session_state["found_"+table] = True
     
 def table_crud(table, action):
     if action not in ["update", "delete"]:
@@ -106,35 +143,33 @@ def table_crud(table, action):
         st.warning(f"Invalid table name: {table}")
         return False
     
-    table_path = TABLE_PATHS[table]
     t_fields = TABLE_FIELDS[table]
+    t_list = list(t_fields.keys())
     s_fields = SESSION_FIELDS[table]
     
-    df = pd.read_csv(table_path).convert_dtypes()
+    df = read_csv(table)
+        
     if table == "song_to_artist" or table == "song_to_source":
-        t_id1, t_id2 = t_fields[0], t_fields[1]
+        t_id1, t_id2 = t_list[0], t_list[1]
         s_id1, s_id2 = s_fields[0], s_fields[1]
         match = df[(df[t_id1] == st.session_state[s_id1]) & (df[t_id2] == st.session_state[s_id2])]
     else:
-        t_id = t_fields[0]
+        t_id = t_list[0]
         s_id = s_fields[0]
         match = df[df[t_id] == st.session_state[s_id]]
-    print(match)
     
     if action == "update":
         row = {}
-        for i in range(len(TABLE_FIELDS[table])):
-            t_field = TABLE_FIELDS[table][i]
-            s_field = SESSION_FIELDS[table][i]
+        for i, t_field in enumerate(t_fields.keys()):
+            s_field = s_fields[i]
             row[t_field] = st.session_state[s_field]
-
+        
         st.session_state.added_new_entry = match.empty
         if match.empty: # Add
             row_df = pd.DataFrame([row])
             df = pd.concat([df, row_df], ignore_index=True)
-        else: # Edit
+        else: # Update
             index = match.index[0]
-            
             df.loc[index] = row
             
     elif action == "delete":
@@ -144,7 +179,7 @@ def table_crud(table, action):
         
         df = df.drop(match.index)
         
-    df.to_csv(table_path, index=False)
+    to_csv(table, df)
     return True
 
 def verify_row_non_blank(table):
@@ -152,7 +187,7 @@ def verify_row_non_blank(table):
     for field in fields:
         entry = st.session_state[field]
         if entry is None or (isinstance(entry, str) and not entry.strip()):
-            st.error(f"Cannot have empty field {field}: {entry}")
+            st.error(f"Cannot have empty field for {field}")
             return False
     return True
 
@@ -161,38 +196,32 @@ def valid_duration(duration):
         st.error(f"Please enter time in MM:SS format (e.g., 0:45, 12:05) {duration}")
         return False
     return True
+        
+def submit_row(table):
+    if table not in TABLE_FIELDS:
+        st.warning(f"Invalid table name: {table}")
+        return False
 
-
-# Hoist to top to get around key edit error
-if "submit_songs" in st.session_state:
-    if st.session_state.songs_song_id == "":
-        st.session_state.songs_song_id = str(uuid.uuid4())
-
-    if verify_row_non_blank("songs") and valid_duration(st.session_state.songs_duration):
-        if table_crud("songs", "update"):
-            change = "Added" if st.session_state.added_new_entry else "Updated"
-            st.success(f"{change} {st.session_state.songs_original_name}!")
-    del st.session_state.submit_songs
-
-if "submit_artists" in st.session_state:
-    if st.session_state.artists_artist_id == "":
-        st.session_state.artists_artist_id = str(uuid.uuid4())
-
-    if verify_row_non_blank("artists"):
-        if table_crud("artists", "update"):
-            change = "Added" if st.session_state.added_new_entry else "Updated"
-            st.success(f"{change} {st.session_state.artists_original_name}!")
-    del st.session_state.submit_artists
-            
-if "submit_sources" in st.session_state:
-    if st.session_state.sources_source_id == "":
-        st.session_state.sources_source_id = str(uuid.uuid4())
-
-    if verify_row_non_blank("sources"):
-        if table_crud("sources", "update"):
-            change = "Added" if st.session_state.added_new_entry else "Updated"
-            st.success(f"{change} {st.session_state.sources_original_title}!")
-    del st.session_state.submit_sources    
+    s_fields = SESSION_FIELDS[table]
+    id_field = s_fields[0]
+    if st.session_state[id_field] == "":
+        st.session_state[id_field] = str(uuid.uuid4())
+        
+    if not verify_row_non_blank(table):
+        return
+    if "songs_duration" in s_fields:
+        if not valid_duration(st.session_state.songs_duration):
+            return
+    table_crud(table, "update")        
+        
+def submit_join(table):
+    if table not in TABLE_FIELDS:
+        st.warning(f"Invalid table name: {table}")
+        return False
+    if not verify_row_non_blank(table):
+        return
+    if table_crud(table, "update"):
+        st.success(f"Updated entry!")
 
 
 
@@ -203,29 +232,10 @@ st.header("Songs")
 
 with st.form("songs_search"):
     c1, c2 = st.columns([4, 1])
-    english_name = c1.text_input("Search Song by English Name")
+    english_name = c1.text_input("Search Song by English Name", key="songs_search_name")
     c2.write(" ")
-    submit = c2.form_submit_button("Search Name")
+    submit = c2.form_submit_button("Search Name", on_click=search_table, args=("songs", "english_name", "songs_search_name"))
     
-    if submit:
-        if not english_name.strip():
-            st.warning("Please enter a non-blank name.")
-        else:   
-            df = pd.read_csv(TABLE_PATHS["songs"]).convert_dtypes()
-            result = df[df["english_name"].str.contains(english_name, case=False, na=False)]
-            if not result.empty:
-                match = result.iloc[0]
-                for i in range(len(SESSION_FIELDS["songs"])):
-                    s_field = SESSION_FIELDS["songs"][i]
-                    t_field = TABLE_FIELDS["songs"][i]
-                    st.session_state[s_field] = match[t_field]
-                    
-                st.session_state.songs_release_date = pd.to_datetime(match["release_date"]).date()
-                st.session_state.songs_progress = int(match["progress"])
-                st.session_state.found_song = True
-            else:
-                st.warning("No song found with that name.")
-
 
 with st.expander("Song Fields", expanded=True):
     c1, c2 = st.columns([1, 3])
@@ -255,12 +265,10 @@ with st.expander("Song Fields", expanded=True):
         r4c1.text_input("Youtube Link", key="songs_youtube_link")
         r4c2.number_input("Progress", min_value=1, max_value=5, key="songs_progress")
         
-        submit = st.form_submit_button("Add/Update Song")
-
+        submit = st.form_submit_button("Add/Update Song", on_click=submit_row, args=("songs",))
         if submit:
-            st.balloons()
-            st.session_state.submit_songs = True
-            st.rerun()
+            change = "Added" if st.session_state.added_new_entry else "Updated"
+            st.success(f"{change} {st.session_state.songs_original_name}!")
 
 
 # Artists
@@ -268,25 +276,9 @@ st.header("Artists")
 
 with st.form("artists_search"):
     c1, c2 = st.columns([4, 1])
-    english_name = c1.text_input("Search Artist by English Name")
+    english_name = c1.text_input("Search Artist by English Name", key="artists_search_name")
     c2.write(" ")
-    submit = c2.form_submit_button("Search Name")
-    
-    if submit:
-        if not english_name.strip():
-            st.warning("Please enter a non-blank name.")
-        else:
-            df = pd.read_csv(TABLE_PATHS["artists"]).convert_dtypes()
-            result = df[df["english_name"].str.contains(english_name, case=False, na=False)]
-            if not result.empty:
-                match = result.iloc[0]
-                for i in range(len(SESSION_FIELDS["artists"])):
-                    s_field = SESSION_FIELDS["artists"][i]
-                    t_field = TABLE_FIELDS["artists"][i]
-                    st.session_state[s_field] = match[t_field] 
-                st.session_state.found_artist = True                  
-            else:
-                st.warning("No artist found with that name.")
+    submit = c2.form_submit_button("Search Name", on_click=search_table, args=("artists", "english_name", "artists_search_name"))
 
 
 with st.expander("Artist Fields", expanded=True):
@@ -310,12 +302,11 @@ with st.expander("Artist Fields", expanded=True):
         
         st.text_input("Type", key="artists_type")
         
-        submit = st.form_submit_button("Add/Update Artist")
-
+        submit = st.form_submit_button("Add/Update Artist", on_click=submit_row, args=("artists",))
         if submit:
-            st.balloons()
-            st.session_state.submit_artists = True
-            st.rerun()
+            change = "Added" if st.session_state.added_new_entry else "Updated"
+            st.success(f"{change} {st.session_state.artists_original_name}!")
+
 
 
 # Sources
@@ -323,27 +314,9 @@ st.header("Sources")
 
 with st.form("sources_search"):
     c1, c2 = st.columns([4, 1])
-    english_title = c1.text_input("Search Source by English Title")
+    english_title = c1.text_input("Search Source by English Title", key="sources_search_title")
     c2.write(" ")
-    submit = c2.form_submit_button("Search Title")
-    
-    if submit:
-        if not english_title.strip():
-            st.warning("Please enter a non-blank title.")
-        else:   
-            df = pd.read_csv(TABLE_PATHS["sources"]).convert_dtypes()
-            result = df[df["english_title"].str.contains(english_title, case=False, na=False)]
-            if not result.empty:
-                match = result.iloc[0]
-                for i in range(len(SESSION_FIELDS["sources"])):
-                    s_field = SESSION_FIELDS["sources"][i]
-                    t_field = TABLE_FIELDS["sources"][i]
-                    st.session_state[s_field] = match[t_field]
-                    
-                st.session_state.sources_release_date = pd.to_datetime(match["release_date"]).date()
-                st.session_state.found_source = True
-            else:
-                st.warning("No source found with that title.")
+    submit = c2.form_submit_button("Search Title", on_click=search_table, args=("sources", "english_title", "sources_search_title"))
 
 
 with st.expander("Source Fields", expanded=True):
@@ -370,17 +343,15 @@ with st.expander("Source Fields", expanded=True):
         r3c2.date_input("Release Date", key="sources_release_date")
         r3c3.text_input("Creator", key="sources_creator")
         
-        submit = st.form_submit_button("Add/Update Source")
-
+        submit = st.form_submit_button("Add/Update Source", on_click=submit_row, args=("sources",))
         if submit:
-            st.balloons()
-            st.session_state.submit_sources = True
-            st.rerun()
+            change = "Added" if st.session_state.added_new_entry else "Updated"
+            st.success(f"{change} {st.session_state.sources_original_title}!")
 
 
-if "found_song" in st.session_state or "found_artist" in st.session_state:
+if "found_songs" in st.session_state or "found_artists" in st.session_state:
     if st.session_state.songs_song_id != "" and st.session_state.artists_artist_id != "":
-        df = pd.read_csv(TABLE_PATHS["song_to_artist"]).convert_dtypes()
+        df = pd.read_csv(TABLE_PATHS["song_to_artist"])
         result = df[(df["song_id"] == st.session_state.songs_song_id) & (df["artist_id"] == st.session_state.artists_artist_id)]
         if not result.empty:
             match = result.iloc[0]
@@ -389,9 +360,9 @@ if "found_song" in st.session_state or "found_artist" in st.session_state:
         else:
             st.warning("No entry found with that name.")
     
-if "found_song" in st.session_state or "found_source" in st.session_state:
+if "found_songs" in st.session_state or "found_sources" in st.session_state:
     if st.session_state.songs_song_id != "" and st.session_state.sources_source_id != "":
-        df = pd.read_csv(TABLE_PATHS["song_to_source"]).convert_dtypes()
+        df = pd.read_csv(TABLE_PATHS["song_to_source"])
         result = df[(df["song_id"] == st.session_state.songs_song_id) & (df["source_id"] == st.session_state.sources_source_id)]
         if not result.empty:
             match = result.iloc[0]
@@ -423,11 +394,7 @@ with st.form("s2a fields", clear_on_submit=False):
     c1.text_input("Role", key="s2a_role")
     c2.toggle("Is Primary", key="s2a_is_primary")
     
-    submit = st.form_submit_button("Add/Update Row")
-    if submit:
-        if verify_row_non_blank("song_to_artist"):
-            if table_crud("song_to_artist", "update"):
-                st.success("Updated entry!")
+    submit = st.form_submit_button("Add/Update Row", on_click=submit_join, args=("song_to_artist",))
             
             
 # Song to Source
@@ -445,9 +412,5 @@ with st.form("s2s fields", clear_on_submit=False):
     c1, c2 = st.columns([2, 1])
     c1.text_input("Relation", key="s2s_relation")
     
-    submit = st.form_submit_button("Add/Update Row")
-    if submit:
-        if verify_row_non_blank("song_to_source"):
-            if table_crud("song_to_source", "update"):
-                st.success("Updated entry!")
+    submit = st.form_submit_button("Add/Update Row", on_click=submit_join, args=("song_to_source",))
 
