@@ -110,7 +110,7 @@ def to_csv(table, df):
 def search_table(table, t_search, s_key):
     name = st.session_state[s_key]
     if not name.strip():
-        st.warning("Please enter a non-blank name.")
+        st.session_state.warning = "Please enter a non-blank name."
         return
     
     t_fields = TABLE_FIELDS[table]
@@ -120,7 +120,7 @@ def search_table(table, t_search, s_key):
     result = df[df[t_search].str.contains(name, case=False, na=False)]
 
     if result.empty:
-        st.warning(f"{name} not found in {table}.")
+        st.session_state.warning = f"{name} not found in {table}."
         return
     
     match = result.iloc[0]
@@ -133,14 +133,14 @@ def search_table(table, t_search, s_key):
         st.session_state[s_field] = val
     
     st.session_state["found_"+table] = True
-    
+
 def table_crud(table, action):
     if action not in ["update", "delete"]:
-        st.warning(f"Invalid song action: {action}")
+        st.session_state.error = f"Invalid table action: {action}"
         return False
     
     if table not in TABLE_FIELDS:
-        st.warning(f"Invalid table name: {table}")
+        st.session_state.error = f"Invalid table name: {table}"
         return False
     
     t_fields = TABLE_FIELDS[table]
@@ -164,21 +164,22 @@ def table_crud(table, action):
             s_field = s_fields[i]
             row[t_field] = st.session_state[s_field]
         
-        st.session_state.added_new_entry = match.empty
         if match.empty: # Add
             row_df = pd.DataFrame([row])
             df = pd.concat([df, row_df], ignore_index=True)
         else: # Update
             index = match.index[0]
             df.loc[index] = row
+        change = "Added" if match.empty else "Updated"
             
     elif action == "delete":
         if match.empty:
-            st.warning(f"ID Entry doesn't exist for deletion in {table}")
+            st.session_state.error = f"ID Entry doesn't exist for deletion in {table}"
             return False
-        
+        change = "Deleted"
         df = df.drop(match.index)
         
+    st.session_state.success = f"{change} entry in {table}!"
     to_csv(table, df)
     return True
 
@@ -187,20 +188,17 @@ def verify_row_non_blank(table):
     for field in fields:
         entry = st.session_state[field]
         if entry is None or (isinstance(entry, str) and not entry.strip()):
-            st.error(f"Cannot have empty field for {field}")
+            st.session_state.error = f"Cannot have empty field for {field}"
             return False
     return True
 
 def valid_duration(duration):
-    if not re.match(r"^\d+:[0-5]\d$", duration):
-        st.error(f"Please enter time in MM:SS format (e.g., 0:45, 12:05) {duration}")
-        return False
-    return True
+    return re.match(r"^\d+:[0-5]\d$", duration)
         
 def submit_row(table):
     if table not in TABLE_FIELDS:
-        st.warning(f"Invalid table name: {table}")
-        return False
+        st.session_state.warning = f"Invalid table name: {table}"
+        return
 
     s_fields = SESSION_FIELDS[table]
     id_field = s_fields[0]
@@ -209,19 +207,29 @@ def submit_row(table):
         
     if not verify_row_non_blank(table):
         return
-    if "songs_duration" in s_fields:
-        if not valid_duration(st.session_state.songs_duration):
-            return
-    table_crud(table, "update")        
+    if "songs_duration" in s_fields and not valid_duration(st.session_state.songs_duration):
+        st.session_state.error(f"Please enter time in MM:SS format (e.g., 0:45, 12:05) {st.session_state.songs_duration}.")
+        return
+    table_crud(table, "update")
         
 def submit_join(table):
     if table not in TABLE_FIELDS:
-        st.warning(f"Invalid table name: {table}")
-        return False
+        st.session_state.warning = f"Invalid table name: {table}"
+        return
     if not verify_row_non_blank(table):
         return
-    if table_crud(table, "update"):
-        st.success(f"Updated entry!")
+    table_crud(table, "update")
+    
+def post_message():
+    if "success" in st.session_state:
+        st.success(st.session_state.success)
+        del st.session_state.success
+    if "warning" in st.session_state:
+        st.warning(st.session_state.warning)
+        del st.session_state.warning
+    if "error" in st.session_state:
+        st.error(st.session_state.error)
+        del st.session_state.error
 
 
 
@@ -235,6 +243,8 @@ with st.form("songs_search"):
     english_name = c1.text_input("Search Song by English Name", key="songs_search_name")
     c2.write(" ")
     submit = c2.form_submit_button("Search Name", on_click=search_table, args=("songs", "english_name", "songs_search_name"))
+    if submit:
+        post_message()
     
 
 with st.expander("Song Fields", expanded=True):
@@ -267,8 +277,7 @@ with st.expander("Song Fields", expanded=True):
         
         submit = st.form_submit_button("Add/Update Song", on_click=submit_row, args=("songs",))
         if submit:
-            change = "Added" if st.session_state.added_new_entry else "Updated"
-            st.success(f"{change} {st.session_state.songs_original_name}!")
+            post_message()
 
 
 # Artists
@@ -279,6 +288,8 @@ with st.form("artists_search"):
     english_name = c1.text_input("Search Artist by English Name", key="artists_search_name")
     c2.write(" ")
     submit = c2.form_submit_button("Search Name", on_click=search_table, args=("artists", "english_name", "artists_search_name"))
+    if submit:
+        post_message()
 
 
 with st.expander("Artist Fields", expanded=True):
@@ -304,9 +315,7 @@ with st.expander("Artist Fields", expanded=True):
         
         submit = st.form_submit_button("Add/Update Artist", on_click=submit_row, args=("artists",))
         if submit:
-            change = "Added" if st.session_state.added_new_entry else "Updated"
-            st.success(f"{change} {st.session_state.artists_original_name}!")
-
+            post_message()
 
 
 # Sources
@@ -317,6 +326,8 @@ with st.form("sources_search"):
     english_title = c1.text_input("Search Source by English Title", key="sources_search_title")
     c2.write(" ")
     submit = c2.form_submit_button("Search Title", on_click=search_table, args=("sources", "english_title", "sources_search_title"))
+    if submit:
+        post_message()
 
 
 with st.expander("Source Fields", expanded=True):
@@ -345,8 +356,7 @@ with st.expander("Source Fields", expanded=True):
         
         submit = st.form_submit_button("Add/Update Source", on_click=submit_row, args=("sources",))
         if submit:
-            change = "Added" if st.session_state.added_new_entry else "Updated"
-            st.success(f"{change} {st.session_state.sources_original_title}!")
+            post_message()
 
 
 if "found_songs" in st.session_state or "found_artists" in st.session_state:
@@ -357,8 +367,6 @@ if "found_songs" in st.session_state or "found_artists" in st.session_state:
             match = result.iloc[0]
             st.session_state.s2a_role = match["role"]
             st.session_state.s2a_is_primary = bool(match["is_primary"])
-        else:
-            st.warning("No entry found with that name.")
     
 if "found_songs" in st.session_state or "found_sources" in st.session_state:
     if st.session_state.songs_song_id != "" and st.session_state.sources_source_id != "":
@@ -367,8 +375,6 @@ if "found_songs" in st.session_state or "found_sources" in st.session_state:
         if not result.empty:
             match = result.iloc[0]
             st.session_state.s2s_relation = match["relation"]
-        else:
-            st.warning("No entry found with that name.")
             
 if "found_song" in st.session_state:
     del st.session_state.found_song
@@ -395,6 +401,8 @@ with st.form("s2a fields", clear_on_submit=False):
     c2.toggle("Is Primary", key="s2a_is_primary")
     
     submit = st.form_submit_button("Add/Update Row", on_click=submit_join, args=("song_to_artist",))
+    if submit:
+        post_message()
             
             
 # Song to Source
@@ -413,4 +421,6 @@ with st.form("s2s fields", clear_on_submit=False):
     c1.text_input("Relation", key="s2s_relation")
     
     submit = st.form_submit_button("Add/Update Row", on_click=submit_join, args=("song_to_source",))
+    if submit:
+        post_message()
 
