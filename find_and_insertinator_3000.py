@@ -239,13 +239,13 @@ def post_message():
 if "init" not in st.session_state:
     st.session_state.init = True
     
-    image = Image.open("appIcon.jpg")
-    st.set_page_config(page_title="Piano Corner Table Manager",
-                       page_icon=image)
-    
     for table in SESSION_FIELDS:
         reset_table(table)
 
+
+image = Image.open("appIcon.jpg")
+st.set_page_config(page_title="Piano Corner Table Manager",
+                   page_icon=image)
 
 st.title(":blue[Piano Corner Find and Insertinator 3000]")
 
