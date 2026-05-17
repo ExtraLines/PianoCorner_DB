@@ -10,26 +10,16 @@ adherence to the third normal form.
 
 ## Tables
 
-### Songs
-
-Table of all the songs, with current playing progress represented as a scale from 1-5
+Songs - Table of all the songs, with current playing progress represented as a scale from 1-5
 and youtube link for ease of access
 
-### Artists
+Artists - All main artists which are associated with the songs
 
-All main artists which are associated with the songs
+Sources - All sources that the songs originate from, if they exist
 
-### Sources
+Song to Artist - How each song is associated with the artist, whether as a singer, producer, etc
 
-All sources that the songs originate from, if they exist
-
-### Song to Artist
-
-How each song is associated with the artist, whether as a singer, producer, etc
-
-### Song to Source
-
-How each song is associated with the source, whether it's an anime, movie, or game
+Song to Source - How each song is associated with the source, whether it's an anime, movie, or game
 
 
 ## Schema
