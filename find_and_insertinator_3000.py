@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import uuid
+from PIL import Image
 import datetime
 import re
 
@@ -26,18 +27,7 @@ TABLE_PATHS = {
     "song_to_artist": "data/Piano Corner - Song to Artist.csv",
     "song_to_source": "data/Piano Corner - Song to Source.csv"
 }
-date_fields = ["release_date"]
-
-
-if "init" not in st.session_state:
-    st.session_state.init = True
-    for table in SESSION_FIELDS:
-        for field in table:
-            st.session_state[field] = ""
-    st.session_state.songs_release_date = datetime.date.today()
-    st.session_state.songs_progress = 1
-    st.session_state.sources_release_date = datetime.date.today()
-    st.session_state.s2a_is_primary = False
+date_fields = ["release_date"]    
     
     
 st.markdown("""
@@ -97,6 +87,18 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+
+def reset_table(table):
+    for field in SESSION_FIELDS[table]:
+        st.session_state[field] = ""
+        
+    if table == "songs":
+        st.session_state.songs_release_date = datetime.date.today()
+        st.session_state.songs_progress = 1
+    elif table == "sources":
+        st.session_state.sources_release_date = datetime.date.today()
+    elif table == "song_to_artist":
+        st.session_state.s2a_is_primary = False
 
 def read_csv(table):
     table_path = TABLE_PATHS[table]
@@ -233,6 +235,18 @@ def post_message():
 
 
 
+
+if "init" not in st.session_state:
+    st.session_state.init = True
+    
+    image = Image.open("appIcon.jpg")
+    st.set_page_config(page_title="Piano Corner Table Manager",
+                       page_icon=image)
+    
+    for table in SESSION_FIELDS:
+        reset_table(table)
+
+
 st.title(":blue[Piano Corner Find and Insertinator 3000]")
 
 # Songs
@@ -248,13 +262,17 @@ with st.form("songs_search"):
     
 
 with st.expander("Song Fields", expanded=True):
-    c1, c2 = st.columns([1, 3])
+    c1, c2, c3 = st.columns([2, 2, 2])
 
     clear_song_id = c1.button("Clear Song ID")
     if clear_song_id:
         st.session_state.songs_song_id = ""
         
-    delete_song = c2.button("Remove Song ID from table")
+    clear_song_fields = c2.button("Clear Song Fields")
+    if clear_song_fields:
+        reset_table("songs")
+        
+    delete_song = c3.button("Remove Song by ID from table")
     if delete_song:
         if table_crud("songs", "delete"):
             st.success(f"Deleted {st.session_state.songs_song_id}!")
@@ -271,7 +289,7 @@ with st.expander("Song Fields", expanded=True):
         r3c2.text_input("Duration (MM:SS)", key="songs_duration")
         r3c3.text_input("Genre", key="songs_genre")
         
-        r4c1, r4c2 = st.columns(2)
+        r4c1, r4c2 = st.columns([2, 1])
         r4c1.text_input("Youtube Link", key="songs_youtube_link")
         r4c2.number_input("Progress", min_value=1, max_value=5, key="songs_progress")
         
@@ -293,13 +311,17 @@ with st.form("artists_search"):
 
 
 with st.expander("Artist Fields", expanded=True):
-    c1, c2 = st.columns([1, 3])
+    c1, c2, c3 = st.columns([2, 2, 2])
 
     clear_artist_id = c1.button("Clear Artist ID")
     if clear_artist_id:
         st.session_state.artists_artist_id = ""
+        
+    clear_artist_fields = c2.button("Clear Artist Fields")
+    if clear_artist_fields:
+        reset_table("artists")
 
-    delete_artist = c2.button("Remove Artist by ID from table")
+    delete_artist = c3.button("Remove Artist by ID from table")
     if delete_artist:
         if table_crud("artists", "delete"):
             st.success(f"Deleted {st.session_state.artists_artist_id}!")
@@ -331,13 +353,17 @@ with st.form("sources_search"):
 
 
 with st.expander("Source Fields", expanded=True):
-    c1, c2 = st.columns([1, 3])
+    c1, c2, c3 = st.columns([2, 2, 2])
 
     clear_source_id = c1.button("Clear Source ID")
     if clear_source_id:
         st.session_state.sources_source_id = ""
         
-    delete_source = c2.button("Remove Source by ID from table")
+    clear_source_fields = c2.button("Clear Source Fields")
+    if clear_source_fields:
+        reset_table("sources")
+        
+    delete_source = c3.button("Remove Source by ID from table")
     if delete_source:
         if table_crud("sources", "delete"):
             st.success(f"Deleted {st.session_state.sources_source_id}!")
